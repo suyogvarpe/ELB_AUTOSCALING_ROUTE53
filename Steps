@@ -37,6 +37,6 @@ Create a Record Set:
 Enter your subdomain (e.g., www).
 Choose Alias and select the ELB.
 Copy all the Name Server records from Route 53 and update them on your domain registrar's website under the Name Server settings.
-Finally, type your domain name with www (e.g., www.example.com) in the browser — it should redirect to your hosted website.
+Finally, type your domain name with www (e.g., www.cushionart.store.com) in the browser — it should redirect to your hosted website.
 
 If you want to check this works or not , kindly terminate Ec2 instance, it should start new Ec2 automatically. Auto scaling method should work here.
