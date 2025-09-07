@@ -31,6 +31,7 @@ Copy the DNS name of the ELB and paste it into your browser to verify if the web
 
 6. Route 53
 Purchase a domain from any domain registrar (e.g., GoDaddy, Namecheap).
+My purchased domain is cushionart.store which is purchased from Namecheap site
 Go to AWS Route 53 and create a Hosted Zone using the purchased domain.
 Create a Record Set:
 Enter your subdomain (e.g., www).
