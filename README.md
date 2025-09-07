@@ -5,9 +5,10 @@
 
 1. EC2 Instance ✅
 First, create an EC2 instance and host your website on that instance.
+EC2 instance should be created using our old project steps link is -https://github.com/suyogvarpe/PHP_PROJECT_USING_RDS/blob/main/Steps
 Create an image (AMI) of this EC2 instance. Delete the EC2 instance after creating the image.
 
-2. Security Groups✅
+3. Security Groups✅
 Create two security groups:
 *First Security Group: For the ELB (Elastic Load Balancer).
 Inbound Rule: Add HTTPS protocol with source 0.0.0.0/0.
@@ -17,18 +18,18 @@ Inbound Rules:
 Add SSH protocol.
 Add HTTP protocol with source as the First Security Group (to allow traffic from ELB to EC2).
 
-3. Auto Scaling✅
+4. Auto Scaling✅
 Go to Auto Scaling and choose "Create from My Launch Template".
 Create a launch template using the AMI created from the previously hosted EC2 instance.
 Use this launch template to create an Auto Scaling group.
 
-4. ELB (Elastic Load Balancer)✅
+5. ELB (Elastic Load Balancer)✅
 Create a Target Group.
 Add all EC2 instances (launched by auto scaling) to this target group.
 Create an ELB and attach the created target group to it.
 Copy the DNS name of the ELB and paste it into your browser to verify if the website is hosted correctly
 
-5. Route 53✅
+6. Route 53✅
 Purchase a domain from any domain registrar (e.g., GoDaddy, Namecheap).
 Go to AWS Route 53 and create a Hosted Zone using the purchased domain.
 Create a Record Set:
