@@ -1,0 +1,41 @@
+# ELB_AUTOSCALING_ROUTE53
+
+Steps to Host a Website on AWS Using EC2, ELB, Auto Scaling, and Route 53
+I am using both ELB and Auto Scaling; they help ensure our website remains available in any server crashes.
+
+1. EC2 Instance 
+First, create an EC2 instance and host your website on that instance.
+EC2 instance should be created using our old project steps link is -https://github.com/suyogvarpe/PHP_PROJECT_USING_RDS/blob/main/Steps
+Create an image (AMI) of this EC2 instance. Delete the EC2 instance after creating the image.
+
+3. Security Groups
+Create two security groups:
+*First Security Group: For the ELB (Elastic Load Balancer).
+Inbound Rule: Add HTTPS protocol with source 0.0.0.0/0.
+Outbound Rule: Allow all traffic with destination 0.0.0.0/0.
+*Second Security Group: For EC2 instances.
+Inbound Rules:
+Add SSH protocol.
+Add HTTP protocol with source as the First Security Group (to allow traffic from ELB to EC2).
+
+4. Auto Scaling
+Go to Auto Scaling and choose "Create from My Launch Template".
+Create a launch template using the AMI created from the previously hosted EC2 instance.
+Use this launch template to create an Auto Scaling group.
+
+5. ELB (Elastic Load Balancer)
+Create a Target Group.
+Add all EC2 instances (launched by auto scaling) to this target group.
+Create an ELB and attach the created target group to it.
+Copy the DNS name of the ELB and paste it into your browser to verify if the website is hosted correctly
+
+6. Route 53
+Purchase a domain from any domain registrar (e.g., GoDaddy, Namecheap).
+Go to AWS Route 53 and create a Hosted Zone using the purchased domain.
+Create a Record Set:
+Enter your subdomain (e.g., www).
+Choose Alias and select the ELB.
+Copy all the Name Server records from Route 53 and update them on your domain registrar's website under the Name Server settings.
+Finally, type your domain name with www (e.g., www.example.com) in the browser — it should redirect to your hosted website.
+
+If you want to check this works or not , kindly terminate Ec2 instance, it should start new Ec2 automatically. Auto scaling method should work here.
